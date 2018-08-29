@@ -171,3 +171,13 @@ def test(request, id=None):
         "str_label": str_label
     }
     return render(request, "result.html", context)
+
+
+def search_bug_category(request):
+
+    return render(request, "search_bugs_by_category.html", {})
+
+
+
+def search_bug_name(request):
+    return render(request, "search_bugs_by_name.html", {})

@@ -13,5 +13,7 @@ urlpatterns = [
     path("<int:id>/edit", views.post_update,name='update'),
     path("<int:id>/delete", views.post_delete,name='delete'),
     path("<int:id>/result", views.test, name='result'),
+    path("search_category/", views.search_bug_category, name='category'),
+    path("search_name/", views.search_bug_name, name='name'),
 
 ]

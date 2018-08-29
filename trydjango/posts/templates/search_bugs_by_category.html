@@ -1,0 +1,129 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="col-sm-6 col-sm-offset-3">
+    <br/><br/><br/>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>based on the selection display different things</title>
+</head>
+<body>
+<style type="text/css">
+.image
+{
+    width:160px;
+    height:160px;
+    vertical-align:middle;
+    padding-right:2px;
+    margin:0px auto;
+	height：20px;
+	line-height:20px;
+}
+
+.f1{
+  color: #202020;
+  background-color: #2d2d2d;
+  text-shadow:
+    -1px -1px 1px #111111,
+    2px 2px 1px #363636;
+
+}
+
+</style>
+<select id="selectid" onchange="role()">
+    <option value="">please choose the insect size</option>
+    <option value="1">1-4mm</option>
+    <option value="2">5-10mm</option>
+    <option value="3">11-25mm</option>
+</select>
+
+<div id="m" style="display: none;">
+        <span class="x-red"></span>
+		<div>
+			<span class="fl">whitefly</span>
+			<img class="image" src="/static/img/2.1 Cabbage-Whitefly.jpg">
+		</div>
+		<div>
+			<span class="fl">Aphids</span>
+			<img class="image" src="/static/img/1.2 aphid-crop2_full_width.jpg">
+		</div>
+		<div>
+			<span class="fl">mealybug</span>
+			<img class="image" src="/static/img/3.1 Mealybugs.jpg">
+		</div>
+		<div>
+			<span class="fl">psyllids</span>
+			<img class="image" src="/static/img/8.1 Psyllids.jpg">
+		</div>
+</div>
+
+
+<div id="mm" style="display: none;">
+        <span class="x-red"></span>
+		<div>
+			<span class="fl">cabbage moth</span>
+			<img class="image" src="/static/img/4.1 Cabbage-Moth.jpg">
+		</div>
+		<div>
+			<span class="fl">citrus leafminer</span>
+			<img class="image" src="/static/img/6.1 Citrus-Leafminer-silver-trail.jpg">
+		</div>
+</div>
+
+<div id="mmm" style="display: none;">
+        <span class="x-red"></span>
+		<div>
+			<span class="fl">japanese bettle</span>
+			<img class="image" src="/static/img/5.1 japanese-beetle-damage_1_full_width.jpg">
+		</div>
+		<div>
+			<span class="fl">european earwig</span>
+			<img class="image" src="/static/img/7.1 European-Earwig.jpg">
+		</div>
+		<div>
+			<span class="fl">slugs</span>
+			<img class="image" src="/static/img/9.2 slugs-eggs-soil_full_width.jpg">
+		</div>
+		<div>
+			<span class="fl">cabbageworms</span>
+			<img class="image" src="/static/img/10.1 get-rid-of-cabbage-worms.jpg">
+		</div>
+</div>
+
+
+<script>
+    function role(){
+        var sel1 = document.getElementById('selectid');
+        var index = sel1.selectedIndex;
+        var value=sel1.options[index].value;
+        console.log(value);
+        if(value==1){
+			document.getElementById("m").style.display="none";
+            document.getElementById("mm").style.display="none";
+	        document.getElementById("mmm").style.display="none";
+            document.getElementById("m").style.display="block";
+        }else if(value==2){
+			document.getElementById("m").style.display="none";
+            document.getElementById("mm").style.display="none";
+	        document.getElementById("mmm").style.display="none";
+            document.getElementById("mm").style.display="block";
+        }else if(value==3){
+			document.getElementById("m").style.display="none";
+            document.getElementById("mm").style.display="none";
+	        document.getElementById("mmm").style.display="none";
+            document.getElementById("mmm").style.display="block";
+        }
+        else{
+            document.getElementById("m").style.display="none";
+            document.getElementById("mm").style.display="none";
+	        document.getElementById("mmm").style.display="none";
+        }
+
+
+    }
+</script>
+
+</body>
+</html>
+</div>
+{%endblock content%}
