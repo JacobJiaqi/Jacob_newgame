@@ -7,12 +7,14 @@
     h1 {
     color: #777777;
     }
-
+    input {
+    background: #green;
+    }
     {%endblock style%}
 </style>
 {%block content%}
-
-
+<div class="col-sm-6 col-sm-offset-3">
+    <br/>
 {% if messages %}
 <ul class="messages">
     {% for message in messages%}
@@ -20,12 +22,12 @@
     {%endfor%}
 </ul>
 {% endif %}
-<img src="{{instance.image.url}}" class="img-responsive"/>
-
-<h1>{{title}} is working!</h1>
-
-    {{instance.title}}<br/>
-    {{instance.content}}<br/>
+<h1> Upload Successful!</h1>
+<img src="{{instance.image.url}}" class="img-responsive"/><br/>
+<form action="#" method="get">
+ <input type="submit" class="btn" value="Generate result" name="mybtn" >
+</form>
     {{instance.timestamp}}<br/>
     {{instance.id}}<br/>
+</div>
 {% endblock content%}

@@ -5,7 +5,7 @@ from django.conf.urls import url,include,static
 from posts import views
 from django.conf import settings
 
-app_name="posts"
+app_name = "posts"
 urlpatterns = [
     path("", views.post_home, name='post_home'),
     path("create/", views.post_create, name='post_create'),

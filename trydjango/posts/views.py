@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 
 
 def post_home(request):
-    query_set_list = Post.objects.all()#.order_by("-timestamp")
+    # query_set_list = Post.objects.all()#.order_by("-timestamp")
     context = {
         # 'title': 'HOME PAGE',
         # 'Post_query': query_set,
@@ -47,21 +47,40 @@ def post_update(request,id=None):
 
 def post_create(request):
     form = PostForm(request.POST or None,request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        messages.success(request,"successfully create")
-        return HttpResponseRedirect(instance.get_absolute_url())
-    else:
-        messages.error(request,"Not successfully create yet")
+    try:
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request,"successfully upload")
+            return HttpResponseRedirect(instance.get_absolute_url())
+    except():
+        return render(request, 'forms.html', {
+                     "form": form,
+                     'error_message': "You did not select a chioce."})
+    # else:
+    #     messages.error(request,"Not successfully upload yet")
     context = {
         "form": form
     }
     return render(request, "forms.html", context)
+# def vote(request,question_id):
+#     question = get_object_or_404(Question,pk=question_id)
+#     try:
+#         selected_choice = question.choice_set.get(pk=request.POST['choice'])
+#     except (KeyError, Choice.DoesNotExist):
+#         return render(request,'polls/detail.html',{
+#             'question': question,
+#             'error_message': "You did not select a chioce."})
+#     else:
+#         selected_choice.votes +=1
+#         selected_choice.save()
+#         return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
 
 
 def post_detail(request, id=None):
     instance = get_object_or_404(Post, id=id)
+    if (request.GET.get('mybtn')):
+        return HttpResponseRedirect(instance.get_absolute_url_result())
     context = {
         "title": "Detail",
         "instance": instance
@@ -105,11 +124,8 @@ def test(request, id=None):
 
     test_data = testing_data
 
-    #fig = plt.figure()
     for num, data in enumerate(test_data):
         img_data = data[0]
-
-        #y = fig.add_subplot(3, 4, num + 1)
         orig = img_data
         data = img_data.reshape(IMG_SIZE, IMG_SIZE, 1)
 
@@ -148,12 +164,8 @@ def test(request, id=None):
             str_label = 'disease'
         else:
             str_label = 'healthy'
-        #y.imshow(orig, cmap='gray')
-        #plt.title(str_label)
-        #y.axes.get_xaxis().set_visible(False)
-        #y.axes.get_yaxis().set_visible(False)
-    #plt.show()
-    #plt.show()
+
+
     context={
         "instance": instance,
         "str_label": str_label

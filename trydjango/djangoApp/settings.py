@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Australia/Melbourne'
 
 USE_I18N = True
 
@@ -122,7 +122,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR,"static"),
-    #'/var/www/static/',
+
 ]
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")

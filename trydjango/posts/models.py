@@ -12,3 +12,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('posts:detail',kwargs={'id':self.id})
+
+
+    def get_absolute_url_result(self):
+        return reverse('posts:result',kwargs={'id':self.id})
