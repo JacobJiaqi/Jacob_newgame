@@ -1,0 +1,33 @@
+
+{%extends "base.html"%}
+{% block head_title%}{{instance.title}}|Try Django{% endblock head_title %}
+
+<style>
+    {% block style%}
+    h1 {
+    color: #777777;
+    }
+    input {
+    background: #green;
+    }
+    {%endblock style%}
+</style>
+{%block content%}
+<div class="col-sm-6 col-sm-offset-3">
+    <br/>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages%}
+    <li {%if message.tags%} class="{{message.tags}}" {% endif %}>{{message}}</li>
+    {%endfor%}
+</ul>
+{% endif %}
+<h1> Upload Successful!</h1>
+<img src="{{instance.image.url}}" class="img-responsive"/><br/>
+<form action="#" method="get">
+ <input type="submit" class="btn" value="Generate result" name="mybtn" >
+</form>
+    {{instance.timestamp}}<br/>
+    {{instance.id}}<br/>
+</div>
+{% endblock content%}
